@@ -1314,17 +1314,52 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
             textDirection: TextDirection.ltr,
           );
           tp.layout();
-          canvasWrapper.drawText(
-            tp,
-            label.alignment.withinRect(
-              Rect.fromLTRB(
-                to.dx - padding.right - tp.width,
-                from.dy + padding.top - topChartPadding,
-                from.dx + padding.left,
-                to.dy - padding.bottom + bottomChartPadding,
+
+          if (line.height != null) {
+            if (line.position == VerticalPosition.top) {
+              canvasWrapper.drawText(
+                tp,
+                label.alignment.withinRect(
+                  Rect.fromLTRB(
+                    to.dx - padding.right - tp.width + 5,
+                    from.dy + padding.top - topChartPadding - label.labelWidth,
+                    from.dx + padding.left,
+                    to.dy -
+                        padding.bottom +
+                        bottomChartPadding -
+                        label.labelWidth,
+                  ),
+                ),
+              );
+            } else {
+              canvasWrapper.drawText(
+                tp,
+                label.alignment.withinRect(
+                  Rect.fromLTRB(
+                    to.dx - padding.right - tp.width + 5,
+                    from.dy + padding.top - topChartPadding + label.labelWidth,
+                    from.dx + padding.left,
+                    to.dy -
+                        padding.bottom +
+                        bottomChartPadding +
+                        label.labelWidth,
+                  ),
+                ),
+              );
+            }
+          } else {
+            canvasWrapper.drawText(
+              tp,
+              label.alignment.withinRect(
+                Rect.fromLTRB(
+                  to.dx - padding.right - tp.width,
+                  from.dy + padding.top - topChartPadding,
+                  from.dx + padding.left,
+                  to.dy - padding.bottom + bottomChartPadding,
+                ),
               ),
-            ),
-          );
+            );
+          }
         }
       }
     }
