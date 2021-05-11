@@ -386,10 +386,13 @@ abstract class AxisChartPainter<D extends AxisChartData>
             tp,
             Alignment.centerLeft.withinRect(
               Rect.fromPoints(
-                from,
                 Offset(
-                  to.dx - tp.width,
-                  to.dy - tp.height,
+                  from.dx,
+                  from.dy - tp.height - (to.dy - from.dy) - 0.3,
+                ),
+                Offset(
+                  to.dx,
+                  from.dy,
                 ),
               ),
             ),
