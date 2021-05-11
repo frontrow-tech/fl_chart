@@ -371,6 +371,30 @@ abstract class AxisChartPainter<D extends AxisChartData>
         _rangeAnnotationPaint.color = annotation.color;
 
         canvasWrapper.drawRRect(rect, _rangeAnnotationPaint);
+        if (annotation.label != null) {
+          final span = TextSpan(
+            text: '  ${annotation.label}',
+            style: annotation.labelStyle,
+          );
+
+          final tp = TextPainter(
+            text: span,
+            textDirection: TextDirection.ltr,
+          );
+          tp.layout();
+          canvasWrapper.drawText(
+            tp,
+            Alignment.centerLeft.withinRect(
+              Rect.fromPoints(
+                from,
+                Offset(
+                  to.dx - tp.width,
+                  to.dy - tp.height,
+                ),
+              ),
+            ),
+          );
+        }
       }
     }
   }

@@ -725,6 +725,10 @@ class RectangleRangeAnnotation with EquatableMixin {
 
   final double radius;
 
+  final String label;
+
+  final TextStyle labelStyle;
+
   /// Annotates a vertical region from most bottom to most top point of the chart, and
   /// from [x1] to [x2], and fills the area with [color].
   RectangleRangeAnnotation({
@@ -734,6 +738,8 @@ class RectangleRangeAnnotation with EquatableMixin {
     this.y2,
     this.radius = 1,
     this.color = Colors.white,
+    this.label,
+    this.labelStyle,
   });
 
   /// Lerps a [VerticalRangeAnnotation] based on [t] value, check [Tween.lerp].
@@ -749,6 +755,8 @@ class RectangleRangeAnnotation with EquatableMixin {
       y2: lerpDouble(a.y2, b.y2, t),
       color: Color.lerp(a.color, b.color, t),
       radius: lerpDouble(a.radius, b.radius, t),
+      labelStyle: a.labelStyle,
+      label: a.label,
     );
   }
 
@@ -761,5 +769,7 @@ class RectangleRangeAnnotation with EquatableMixin {
         y2,
         color,
         radius,
+        labelStyle,
+        label,
       ];
 }
