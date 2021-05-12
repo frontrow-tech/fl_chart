@@ -384,11 +384,11 @@ abstract class AxisChartPainter<D extends AxisChartData>
           tp.layout();
           canvasWrapper.drawText(
             tp,
-            Alignment.centerLeft.withinRect(
+            Alignment.topLeft.withinRect(
               Rect.fromPoints(
                 Offset(
                   from.dx,
-                  from.dy - tp.height - (to.dy - from.dy) - 0.3,
+                  from.dy - tp.height,
                 ),
                 Offset(
                   to.dx,
